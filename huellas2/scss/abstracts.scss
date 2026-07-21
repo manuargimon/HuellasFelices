@@ -1,0 +1,109 @@
+// ==========================================================================
+// ABSTRACTS — variables, mixins y placeholders (no genera CSS por si solo)
+// ==========================================================================
+
+@use "sass:list";
+
+// ---------- Paleta de color ----------
+$color-forest:        #1F3A2E;
+$color-forest-light:  #2F5443;
+$color-marigold:      #E8A33D;
+$color-marigold-dark: #C97F1E;
+$color-teal:          #3E7C8C;
+$color-paper:         #F5F1E6;
+$color-paper-dark:    #EAE3D2;
+$color-ink:           #262420;
+$color-ink-soft:      #55524A;
+$color-white:         #FFFFFF;
+
+// ---------- Tipografia ----------
+$font-display: "Fraunces", Georgia, serif;
+$font-body:    "Karla", "Segoe UI", sans-serif;
+$font-mono:    "IBM Plex Mono", "Courier New", monospace;
+
+// ---------- Bordes, sombras y transiciones ----------
+$radius-card: 14px;
+$radius-pill: 999px;
+$shadow-soft: 0 6px 18px rgba($color-forest, 0.10);
+$transition-base: all 0.25s ease-in-out;
+
+// ---------- Breakpoints (alineados a Bootstrap) ----------
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+
+// ---------- Mixins ----------
+
+// Media query mobile-first simplificada
+@mixin responsive($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: $bp-sm) { @content; }
+  } @else if $breakpoint == md {
+    @media (min-width: $bp-md) { @content; }
+  } @else if $breakpoint == lg {
+    @media (min-width: $bp-lg) { @content; }
+  } @else if $breakpoint == xl {
+    @media (min-width: $bp-xl) { @content; }
+  }
+}
+
+// Media query "hasta" cierto ancho (para achicar en mobile)
+@mixin until($breakpoint) {
+  @media (max-width: $breakpoint) { @content; }
+}
+
+@mixin flex-center($gap: 0) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @if $gap != 0 { gap: $gap; }
+}
+
+@mixin transition-smooth($props...) {
+  @if list.length($props) == 0 {
+    transition: all 0.25s ease-in-out;
+  } @else {
+    $result: ();
+    @each $prop in $props {
+      $result: list.append($result, $prop 0.25s ease-in-out, comma);
+    }
+    transition: $result;
+  }
+}
+
+@mixin card-base {
+  border-radius: $radius-card;
+  box-shadow: $shadow-soft;
+  @include transition-smooth(transform, box-shadow);
+}
+
+@mixin pill-button {
+  border-radius: $radius-pill;
+  font-weight: 700;
+  padding: 0.55rem 1.5rem;
+  @include transition-smooth;
+}
+
+// ---------- Placeholders (para @extend) ----------
+
+%eyebrow-text {
+  font-family: $font-mono;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  color: $color-marigold-dark;
+}
+
+%heading-font {
+  font-family: $font-display;
+  color: $color-forest;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+%soft-card {
+  @include card-base;
+  border: 1px solid $color-paper-dark;
+  background-color: $color-white;
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contactate con Huellas Felices para agendar tu entrevista de adopcion o resolver dudas.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Huellas Felices">
+    <!-- Open Graph (SEO / previsualizacion en redes sociales) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Huellas Felices | Contacto">
+    <meta property="og:description" content="Contactate con Huellas Felices para agendar tu entrevista de adopcion o resolver dudas.">
+    <meta property="og:locale" content="es_AR">
+    <title>Huellas Felices | Contacto</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+    <!-- LINK BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+    <!-- LINK CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+   <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand brand-huellas" href="../index.html">
+                <svg class="paw-icon" width="26" height="26" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><ellipse cx="32" cy="42" rx="15" ry="11.5"/><ellipse cx="14" cy="24" rx="6.5" ry="8.5" transform="rotate(-18 14 24)"/><ellipse cx="26" cy="12" rx="6.5" ry="8.5"/><ellipse cx="38" cy="12" rx="6.5" ry="8.5"/><ellipse cx="50" cy="24" rx="6.5" ry="8.5" transform="rotate(18 50 24)"/></svg>
+                Huellas Felices
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                <a class="nav-link" href="../index.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="casos.html">Casos</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="nosotros.html">Quienes Somos</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="preguntas.html">Preguntas Frecuentes</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="contacto.html">Contacto</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="ayuda.html">Ayudanos</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+        </nav>
+    </header>
+    <main class="container">
+        <div class="hero fade-in-up">
+            <span class="eyebrow">Hablemos</span>
+            <h1>Contactanos</h1>
+            <p class="lead">¿Queres agendar tu entrevista de adopcion o tenes alguna duda? Escribinos y te respondemos a la brevedad.</p>
+        </div>
+
+        <form action="" class="row g-3 needs-validation" novalidate style="max-width: 640px; margin: 0 auto;">
+            <div class="col-md-6">
+                <label for="name" class="form-label">Nombre completo</label>
+                <input id="name" name="name" type="text" class="form-control" required>
+                <div class="invalid-feedback">Ingresa tu nombre completo.</div>
+            </div>
+            <div class="col-md-6">
+                <label for="telefono" class="form-label">Telefono</label>
+                <input id="telefono" name="telefono" type="tel" class="form-control" pattern="[0-9]{8,15}" required>
+                <div class="invalid-feedback">Ingresa un telefono valido (solo numeros).</div>
+            </div>
+            <div class="col-12">
+                <label for="mail" class="form-label">Email</label>
+                <input id="mail" name="mail" type="email" class="form-control" placeholder="Ej: nombre@email.com" required>
+                <div class="invalid-feedback">Ingresa un email valido.</div>
+            </div>
+            <div class="col-12">
+                <label for="asunto" class="form-label">Asunto</label>
+                <select id="asunto" name="asunto" class="form-select" required>
+                    <option value="" selected disabled>Elegi una opcion...</option>
+                    <option>Quiero agendar una entrevista de adopcion</option>
+                    <option>Quiero ser voluntario</option>
+                    <option>Consulta general</option>
+                </select>
+                <div class="invalid-feedback">Selecciona un asunto.</div>
+            </div>
+            <div class="col-12">
+                <label for="mensaje" class="form-label">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" class="form-control" rows="4" required minlength="10"></textarea>
+                <div class="invalid-feedback">Contanos brevemente tu consulta (minimo 10 caracteres).</div>
+            </div>
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+            </div>
+        </form>
+    </main>
+        <footer class="container">
+        <h3>Ayudanos a rescatar mas animales</h3>
+        <p>Cada adopcion, donacion o accion de voluntariado cambia una vida para siempre.</p>
+        <a href="ayuda.html" class="btn btn-outline-primary mb-4">Ver formas de ayudar</a>
+        <p class="copyright">© 2026 Huellas Felices — Se reservan todos los derechos de autor</p>
+    </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

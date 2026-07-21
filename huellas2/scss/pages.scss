@@ -1,0 +1,46 @@
+// ==========================================================================
+// PAGES — estilos específicos por sección
+// ==========================================================================
+
+@use "abstracts" as *;
+
+// --- Hero ---
+.hero {
+  padding: 3.5rem 1.25rem 2.5rem;
+  text-align: center;
+  max-width: 760px;
+  margin-inline: auto;
+  h1 { font-size: clamp(2rem, 4vw, 2.9rem); margin-bottom: 0.75rem; }
+  p.lead {
+    color: $color-ink-soft;
+    max-width: 600px;
+    margin: 0 auto 1.75rem;
+    font-size: 1.05rem;
+  }
+  @include until(575px) { padding: 2.5rem 1.25rem 2rem; }
+}
+
+// --- Stagger cards ---
+@for $i from 1 through 6 {
+  .row.g-4 .col-md-6:nth-child(#{$i}) .card,
+  .row.g-4 .col-lg-4:nth-child(#{$i}) .card {
+    animation-delay: #{$i * 0.08}s;
+  }
+}
+
+// --- Perfil card (Nosotros) responsive ---
+.perfil-card {
+  @include until($bp-md) {
+    img { max-height: 260px; }
+  }
+}
+
+// --- Sección historia (Nosotros) ---
+.nosotros-historia img {
+  border-radius: $radius-card;
+  box-shadow: $shadow-soft;
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  @include responsive(md) { height: 400px; }
+}

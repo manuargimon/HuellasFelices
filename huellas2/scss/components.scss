@@ -1,0 +1,261 @@
+// ==========================================================================
+// COMPONENTS — navbar, botones, cards, formularios, footer
+// ==========================================================================
+
+@use "abstracts" as *;
+
+// --- Navbar ---
+header .navbar {
+  background-color: $color-forest !important;
+  padding: 0.9rem 1.25rem;
+  @include responsive(md) { padding-left: 2rem; padding-right: 2rem; }
+}
+
+.brand-huellas {
+  @include flex-center(0.5rem);
+  font-family: $font-display;
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: $color-paper !important;
+  transition: opacity 0.25s ease-in-out;
+  &:hover { opacity: 0.85; color: $color-paper !important; }
+  .paw-icon { color: $color-marigold; flex-shrink: 0; }
+}
+
+.navbar .nav-link {
+  font-family: $font-body;
+  color: rgba($color-paper, 0.82) !important;
+  font-weight: 600;
+  padding-left: 0.9rem;
+  padding-right: 0.9rem;
+  border-radius: 8px;
+  transition: color 0.25s ease-in-out, background 0.25s ease-in-out;
+  &:hover, &.active { color: $color-marigold !important; background: rgba(255,255,255,0.05); }
+}
+
+.navbar-toggler { border-color: rgba($color-paper, 0.4); }
+.navbar-toggler-icon { filter: invert(1); }
+
+.navbar-collapse {
+  background-color: $color-forest;
+  border-radius: 0 0 $radius-card $radius-card;
+  @include until($bp-lg) { padding: 0.75rem 1.25rem 1rem; margin-top: 0.5rem; }
+}
+
+// --- Botones ---
+.btn-primary {
+  @include pill-button;
+  background-color: $color-marigold;
+  border-color: $color-marigold;
+  color: $color-forest;
+  &:hover, &:focus {
+    background-color: $color-marigold-dark;
+    border-color: $color-marigold-dark;
+    color: $color-forest;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba($color-marigold, 0.35);
+  }
+}
+
+.btn-outline-primary {
+  @include pill-button;
+  color: $color-forest;
+  border-color: $color-forest;
+  background: transparent;
+  &:hover {
+    background-color: $color-forest;
+    border-color: $color-forest;
+    color: $color-paper;
+    transform: translateY(-2px);
+  }
+}
+
+// --- Cards ---
+.card {
+  @extend %soft-card;
+  overflow: hidden;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba($color-forest, 0.16);
+  }
+}
+.card-img-top { height: 210px; object-fit: cover; width: 100%; }
+.card-body {
+  padding: 1.25rem;
+  .eyebrow { display: block; margin-bottom: 0.35rem; }
+  .card-title { margin-bottom: 0.5rem; }
+  .card-text { color: $color-ink-soft; font-size: 0.95rem; margin-bottom: 1rem; }
+}
+.card-footer {
+  background-color: $color-paper;
+  border-top: 1px dashed $color-paper-dark;
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  padding: 0.65rem 1.25rem;
+  color: $color-ink-soft;
+}
+
+// Perfil cards (Nosotros)
+.perfil-card {
+  border: 1px solid $color-paper-dark;
+  border-radius: $radius-card;
+  overflow: hidden;
+  background: $color-white;
+  box-shadow: 0 2px 8px rgba($color-forest, 0.08);
+  max-width: 620px;
+  @include transition-smooth(box-shadow);
+  &:hover { box-shadow: 0 6px 18px rgba($color-forest, 0.12); }
+  img { object-fit: cover; width: 100%; height: 100%; min-height: 200px; }
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
+  }
+  .card-text { color: $color-ink-soft; font-size: 0.95rem; flex: 1; }
+  @include until($bp-md) {
+    img { min-height: 220px; max-height: 260px; }
+    .row { flex-direction: column; }
+  }
+}
+
+// Cards de ayuda
+.ayuda-card {
+  height: 100%;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  border-radius: $radius-card;
+  box-shadow: 0 2px 8px rgba($color-forest, 0.08);
+  border: 1px solid $color-paper-dark;
+  background: $color-white;
+  @include transition-smooth(transform, box-shadow);
+  &:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba($color-forest, 0.16); }
+  .paw-icon { color: $color-marigold-dark; margin-bottom: 0.75rem; }
+  h5 { margin-bottom: 0.6rem; }
+  p { color: $color-ink-soft; font-size: 0.94rem; }
+}
+
+// --- Separador de patas ---
+.paw-divider {
+  @include flex-center(0.85rem);
+  margin: 2.5rem 0;
+  color: $color-marigold-dark;
+  opacity: 0.8;
+  .paw-icon:nth-child(1) { opacity: 0.35; transform: translateY(3px) scale(0.8); }
+  .paw-icon:nth-child(2) { opacity: 0.65; transform: translateY(-1px) scale(0.92); }
+}
+.paw-icon { display: inline-block; vertical-align: middle; }
+
+// --- Carousel ---
+.carousel {
+  border-radius: $radius-card;
+  box-shadow: $shadow-soft;
+  overflow: hidden;
+  margin-top: 1.5rem;
+}
+.carousel-item img { object-fit: cover; height: 400px; width: 100%; }
+@include until($bp-md) { .carousel-item img { height: 240px; } }
+.carousel-caption {
+  background: linear-gradient(0deg, rgba($color-forest, 0.88) 0%, rgba($color-forest, 0) 100%);
+  border-radius: 0 0 $radius-card $radius-card;
+  bottom: 0; left: 0; right: 0;
+  padding: 2rem 1.5rem 1.25rem;
+  h5 { color: $color-marigold; font-size: 1.4rem; }
+  p { color: $color-paper; margin: 0; }
+}
+
+// Card con overlay (index)
+main .card.text-dark {
+  border-radius: $radius-card;
+  overflow: hidden;
+  max-width: 480px;
+  margin: 0 auto;
+  box-shadow: $shadow-soft;
+}
+.card-img-overlay {
+  background: linear-gradient(0deg, rgba($color-forest,0.92) 10%, rgba($color-forest,0.35) 70%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: $radius-card;
+  .eyebrow { color: $color-marigold; }
+  .card-title { color: $color-paper; }
+}
+
+// --- Acordeón ---
+.accordion-item {
+  border: 1px solid $color-paper-dark;
+  border-radius: $radius-card !important;
+  overflow: hidden;
+  margin-bottom: 0.85rem;
+  background: $color-white;
+}
+.accordion-button {
+  font-family: $font-display;
+  font-weight: 600;
+  color: $color-forest;
+  background-color: $color-white;
+  padding: 1.1rem 1.25rem;
+  &:not(.collapsed) { background-color: $color-paper-dark; color: $color-forest; box-shadow: none; }
+  &:focus { box-shadow: 0 0 0 0.2rem rgba($color-teal, 0.25); }
+}
+.accordion-body { color: $color-ink-soft; padding: 1rem 1.25rem 1.25rem; }
+.accordion-body a { display: inline-block; margin-top: 0.75rem; font-weight: 700; }
+
+// --- Formularios ---
+.form-label {
+  font-family: $font-mono;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: $color-forest;
+  margin-bottom: 0.35rem;
+}
+.form-control, .form-select {
+  border-color: $color-paper-dark;
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  background-color: $color-white;
+  @include transition-smooth(border-color, box-shadow);
+  &:focus { border-color: $color-teal; box-shadow: 0 0 0 0.2rem rgba($color-teal, 0.2); }
+}
+.form-check-input:checked { background-color: $color-forest; border-color: $color-forest; }
+
+// --- Footer ---
+footer {
+  background-color: $color-forest;
+  color: rgba($color-paper, 0.85);
+  padding: 3.5rem 1.25rem 1.5rem;
+  margin-top: 4rem;
+  text-align: center;
+  @include responsive(md) { padding-left: 2rem; padding-right: 2rem; }
+
+  h3 { color: $color-paper; margin-bottom: 0.75rem; }
+  p { color: rgba($color-paper, 0.75); max-width: 540px; margin-inline: auto; }
+
+  .btn-outline-primary {
+    color: $color-paper;
+    border-color: rgba($color-paper, 0.5);
+    &:hover { background-color: $color-paper; border-color: $color-paper; color: $color-forest; }
+  }
+
+  .form-label { color: rgba($color-paper, 0.9); }
+  .form-check-label { color: rgba($color-paper, 0.75); }
+  .form-control, .form-select {
+    background-color: rgba(255,255,255,0.08);
+    border-color: rgba($color-paper, 0.2);
+    color: $color-paper;
+    &::placeholder { color: rgba($color-paper, 0.4); }
+    &:focus { background-color: rgba(255,255,255,0.12); border-color: $color-marigold; box-shadow: 0 0 0 0.2rem rgba($color-marigold, 0.25); }
+  }
+
+  .copyright {
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    border-top: 1px solid rgba($color-paper, 0.15);
+    padding-top: 1.25rem;
+    margin-top: 2rem;
+    color: rgba($color-paper, 0.45);
+  }
+}
